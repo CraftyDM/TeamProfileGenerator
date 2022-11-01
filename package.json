@@ -1,0 +1,29 @@
+{
+  "name": "teamprofilegenerator",
+  "version": "1.0.0",
+  "description": "profile generator, challenge 10",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CraftyDM/TeamProfileGenerator.git"
+  },
+  "author": "Amberlie Arave",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CraftyDM/TeamProfileGenerator/issues"
+  },
+  "homepage": "https://github.com/CraftyDM/TeamProfileGenerator#readme",
+  "dependencies": {
+    "inquirer": "^8.2.5"    
+  },
+  "devDependencies": {
+    "jest": "^29.2.2"
+  }
+}
