@@ -1,5 +1,5 @@
 const fs = require('fs/promises');
-const path = require('path')
+const path = require('path');
 
 const insertHeader = async title => {
     return `
@@ -48,7 +48,7 @@ const generateEngineers = async engineers => {
         <div class="card-body">
             <div class="row">Name: ${engineer.getName()} </div>
             <div class="row">Email: <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></div>
-            <div class="row">Github: <a href="${engineer.getGithub()}">${engineer.getGithub()}</a></div>
+            <div class="row">Github: <a href="https://github.com/${engineer.getGithub()}">${engineer.getGithub()}</a></div>
         </div>
     </div>`
     }
@@ -74,5 +74,13 @@ const generateInterns = async interns => {
 const createHTML = async (title, managers, engineers, interns) => {
     const data = (await insertHeader(title)).concat((await generateBody()))
 
-
+//check if there are issues
+    const outputFile = `../dist/${title}.html`
+    try {
+        await fs.writeFile(outputFile, data)
+    } catch (err) {
+        console.error('Could Not Write File', err)
+    }
 }
+
+module.exports = createHTML
