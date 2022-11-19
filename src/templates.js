@@ -32,7 +32,7 @@ const generateManagers = async managers => {
         <div class="card-body">
             <div class="row">Name: ${manager.getName()} </div>
             <div class="row">Email: <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></div>
-            <div class="row">Room Number: ${manager.getRoomNumber()}</div>
+            <div class="row">Room Number: ${manager.getOfficeNumber()}</div>
         </div>
     </div>`
     }
@@ -72,10 +72,10 @@ const generateInterns = async interns => {
 }
 
 const createHTML = async (title, managers, engineers, interns) => {
-    const data = (await insertHeader(title)).concat((await generateBody()))
+    const data = (await insertHeader(title)).concat((await generateBody(managers, engineers, interns)))
 
 //check if there are issues
-    const outputFile = `../dist/${title}.html`
+    const outputFile = `${__dirname}/../dist/${title}.html`
     try {
         await fs.writeFile(outputFile, data)
     } catch (err) {

@@ -12,10 +12,11 @@ const init = async () => {
                 'Generate Profiles',
                 'Exit'
             ],
-            default: 0
+            default: 0, 
+            name: "base"
         }
     ])
-
+    return answers.base;
 }
 
 const collectData = async type => {
@@ -25,8 +26,9 @@ const collectData = async type => {
             {
                 type: 'input',
                 message: 'Name',
+                name: 'name',
                 validate: input => {
-                    if (input.length < 1) {
+                    if (input.length > 0) {
                         return true
                     } else {
                         return 'Enter Valid Information'
@@ -35,13 +37,19 @@ const collectData = async type => {
             }, {
                 type: 'input',
                 message: 'email',
+                name: 'email',
                 validate: input => {
-                    if (input.length < 1) {
+                    if (input.length > 5) {
                         return true
                     } else {
                         return 'Enter Valid Information'
                     }
                 }
+            },
+            {
+                type: 'input',
+                message: 'employee id',
+                name: 'id'
             }
         ]
         switch (type) {
@@ -49,6 +57,7 @@ const collectData = async type => {
                 questions.push({
                     type: 'input',
                     message: 'Room Number?',
+                    name: 'officeNumber',
                     //added to practice use with Regex-test for a digit
                     validate: input => {
                         if (/\d+/.test(input)) {
@@ -64,8 +73,9 @@ const collectData = async type => {
                 questions.push({
                     type: 'input',
                     message: 'GitHub?',
+                    name: 'github',
                     validate: input => {
-                        if (input.length < 1) {
+                        if (input.length > 5) {
                             return true
                         } else {
                             return 'Enter Valid Information'
@@ -78,8 +88,9 @@ const collectData = async type => {
                 questions.push({
                     type: 'input',
                     message: 'School?',
+                    name: 'school',
                     validate: input => {
-                        if (input.length < 1) {
+                        if (input.length > 5) {
                             return true
                         } else {
                             return 'Enter Valid Information'
